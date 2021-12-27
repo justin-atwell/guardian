@@ -66,6 +66,7 @@ export class InstallerProfileComponent implements OnInit {
     update() {
         this.interval = setInterval(() => {
             this.profileService.getCurrentState().subscribe(user => {
+                console.log(user);
                 if (!this.isConfirmed && !this.isNewAccount) {
                     this.loadDate();
                 }
@@ -92,6 +93,7 @@ export class InstallerProfileComponent implements OnInit {
             this.tokens = tokens.map(e => new Token(e));
             this.rootAuthorities = rootAuthorities || [];
 
+            console.log(profile);
             if (profile) {
                 this.isNewAccount = profile.state == UserState.CREATED;
                 this.isConfirmed = (
